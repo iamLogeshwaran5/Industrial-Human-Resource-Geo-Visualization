@@ -11,15 +11,20 @@ from streamlit_option_menu import option_menu
 import plotly.express as px
 import matplotlib.pyplot as plt
 
+def setting_bg():
+    st.markdown(f""" <style>.stApp {{
+                            background: url("https://cdn.dribbble.com/users/1770290/screenshots/6183149/bg_79.gif");
+                            background-size: cover}}
+                         </style>""", unsafe_allow_html=True)
 
 
-#set st addbar page 
+#set st addbar page
 icon = Image.open("D:/project/Industrial-Human-Resource-Geo-Visualization/icon.png")
+
 st.set_page_config(page_title= "HRM", page_icon= icon, layout= "wide", initial_sidebar_state= "expanded",
-                   menu_items={'About': """# This Flat Resale page is created by *Mohansrinivasan!"""})
-st.markdown("<h1 style='text-align: center; color: White;'>Industrial Human Resource Geo-Visualization</h1>", unsafe_allow_html=True)
-
-
+                   menu_items={'About': """# This page is created by Logeshwaran!"""})
+st.markdown("<h1 style='text-align: center; color: white; border: 2px solid yellow; padding: 10px; font-weight: bold;'>Industrial Human Resource Geo-Visualization</h1>", unsafe_allow_html=True)
+setting_bg()
 
 data = pd.read_csv("D:/project/Industrial-Human-Resource-Geo-Visualization/final_HR.csv")
 
@@ -32,14 +37,16 @@ selected_district = st.sidebar.selectbox("Select District", filtered_districts, 
 state_data = data[(data['State'] == selected_state)]
 district_data = data[(data['District'] == selected_district)]
 
-st.write(f"Showing data for {selected_state} - {selected_district}")
+st.write(f"<div style='text-align: center; font-size: 24px;'>Showing data for {selected_state} - {selected_district}</div>", unsafe_allow_html=True)
 
 total_state_workers = state_data['MainWorkersTotalPersons'].sum()
 total_district_workers = district_data['MainWorkersTotalPersons'].sum()
 
-st.write(f"Total number of state workers: {total_state_workers}")
-st.write(f"Total number of district workers: {total_district_workers}")
+# Set the font size and center the text for total state workers
+st.write(f"<div style='text-align: center; font-size: 24px;'>Total number of state workers: {total_state_workers}</div>", unsafe_allow_html=True)
 
+# Set the font size and center the text for total district workers
+st.write(f"<div style='text-align: center; font-size: 24px;'>Total number of district workers: {total_district_workers}</div>", unsafe_allow_html=True)
 st.subheader("Data Summary")
 st.write(data.describe())
 
@@ -128,7 +135,7 @@ urban_data = data[['State'] + urban_cols].groupby('State').sum().reset_index()
 main_data_melted = main_data.melt(id_vars='State', var_name='WorkerType', value_name='Count')
 
 
-fig = px.bar(main_data_melted, x='State', y='Count', color='WorkerType', 
+fig = px.bar(main_data_melted, x='State', y='Count', color='WorkerType',
              title='Differences in State-wise',
              labels={'Count': 'Total Workers Count'},
              color_discrete_sequence=['#1f77b4', '#ff7f0e', '#2ca02c'],
