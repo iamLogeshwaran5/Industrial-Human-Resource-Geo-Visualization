@@ -7,7 +7,7 @@ This project aims to provide a geo-visualization of industrial human resource da
 ## Data Sources & Guidelines
 
 The project utilizes data from various sources, including [Data Sources](https://drive.google.com/drive/folders/1lGw-OeZVAHeIH1cvNBiGClRiRmbQ-0qm?usp=share_link).
-The Project follows [Google Docs](https://docs.google.com/presentation/d/1FOz7DbPxNJeQrLPPQkjlkOjVWrC3RsZ3/edit?usp=sharing&ouid=110445932469407458454&rtpof=true&sd=true) guidelines.
+The Project follows [Google Docs](https://docs.google.com/document/d/1dn0DLR2NerNKSlYT_FMqQ-tmiGPw1vIAW8chF9HTXMw/edit) guidelines.
 
 ## File Structure
 
